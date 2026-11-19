@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/*
+ * Identidade visual — mockup "SAC-CC Agendamento" (2026-11-05, usuário) sobre a base
+ * Afya (ADR-007). O vinho institucional #680D20 (medido do mockup) domina a marca;
+ * o teal Afya permanece como acento secundário do ecossistema. Fonte da verdade
+ * visual: mockup de referência + docs/adr/ADR-007-identidade-visual-afya.md.
+ */
+@theme {
+  --font-sans: "Nunito Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* vinho institucional (medido do mockup 1536x1024) */
+  --color-brand: #680d20;
+  --color-brand-dark: #570a19;
+  --color-brand-deep: #4a0a17;
+  --color-brand-light: #7d2136;
+  --color-brand-soft: #f7ecef;
+  --color-brand-muted: #cf9aa7;
+
+  /* teal Afya — acento secundário (ADR-007) */
+  --color-accent: #189abe;
+  --color-accent-dark: #10687f;
+  --color-accent-soft: #e9f5f8;
+
+  /* legado Afya (ADR-007) — telas antigas usam primary-* */
+  --color-primary: #278495;
+  --color-primary-dark: #216f7d;
+  --color-primary-darker: #066d8e;
+  --color-primary-light: #49afc9;
+  --color-primary-soft: #dcebee;
+  --color-primary-softer: #eef6f7;
+
+  /* neutras do mockup */
+  --color-canvas: #fdfdfd;
+  --color-panel: #f0f1f5;
+  --color-hairline: #e5e7eb;
+  --color-ink: #111827;
+  --color-ink-2: #374151;
+  --color-ink-3: #5d6470;
+
+  /* sobriedade: cantos discretos (mockup/portal) */
+  --radiusDEFAULT: 4px;
+  --radius-xl2: 8px;
+}
+
+/* foco visível consistente (RNF45) */
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}

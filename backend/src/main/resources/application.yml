@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: saccc
+  datasource:
+    url: ${SACCC_DB_URL:jdbc:postgresql://localhost:5432/saccc}
+    username: ${SACCC_DB_USER:saccc}
+    password: ${SACCC_DB_PASSWORD:saccc}
+  jpa:
+    hibernate:
+      ddl-auto: validate   # esquema nasce só do Flyway (ADR-003)
+    open-in-view: false
+  flyway:
+    enabled: true
+    # {vendor} resolve por banco: PostgreSQL carrega db/postgresql (V004, índice parcial);
+    # H2 resolve para db/h2 (inexistente → ignorado). Fora de db/migration para o scan
+    # recursivo do Flyway não pegar. ADR-003/005.
+    locations: classpath:db/migration,classpath:db/{vendor}
+  jackson:
+    time-zone: America/Sao_Paulo
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

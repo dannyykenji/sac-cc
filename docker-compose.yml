@@ -1,0 +1,37 @@
+# SAC-CC — orquestração para deploy (Docker ou Podman).
+# Uso:
+#   docker compose up -d --build      (ou: podman-compose up -d --build)
+#   app: http://localhost:8080  (API + SPA + WebSocket na mesma origem)
+services:
+  db:
+    image: docker.io/library/postgres:18-alpine
+    environment:
+      POSTGRES_DB: saccc
+      POSTGRES_USER: saccc
+      POSTGRES_PASSWORD: ${SACCC_DB_PASSWORD:-saccc_dev}
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U saccc -d saccc"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SACCC_DB_URL: jdbc:postgresql://db:5432/saccc
+      SACCC_DB_USER: saccc
+      SACCC_DB_PASSWORD: ${SACCC_DB_PASSWORD:-saccc_dev}
+      SACCC_TIMEZONE: ${SACCC_TIMEZONE:-America/Sao_Paulo}
+      TZ: ${SACCC_TIMEZONE:-America/Sao_Paulo}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

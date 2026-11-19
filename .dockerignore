@@ -1,0 +1,10 @@
+# Build de container: só o necessário entra no contexto
+.git
+.idea
+.vscode
+backend/target
+frontend/node_modules
+frontend/dist
+docs/design/prints
+*.md
+!README.md
