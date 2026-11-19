@@ -3,8 +3,16 @@
 > Sistema web completo (full-stack) para agendamento e acompanhamento de atendimentos da coordenação de Ciência da Computação: horários online/presenciais, registro de resultados, chat em tempo real, auditoria e painel de indicadores.
 
 **[Java 17](https://openjdk.org/) · [Spring Boot 3.5](https://spring.io/projects/spring-boot) · [React 19](https://react.dev/) + TypeScript + Tailwind · [PostgreSQL 18](https://www.postgresql.org/) · WebSocket/STOMP · Docker**
+---
+Aviso: Esta aplicação está hospedada no plano gratuito do Render. Por isso, o servidor pode levar alguns instantes para responder ao primeiro acesso, pois pode entrar em modo de inatividade após um período sem utilização. Aguarde um momento enquanto a aplicação é inicializada.
+---
 
-> ** Aviso:** Esta aplicação está hospedada no plano gratuito do Render. Por isso, o servidor pode levar alguns instantes para responder ao primeiro acesso, pois pode entrar em modo de inatividade após um período sem utilização. Aguarde um momento enquanto a aplicação é inicializada.
+### Contas de seed (contas para teste, como não tenho login do aluno do canvas)
+| E-mail | Senha | Perfil |
+|---|---|---|
+| `admin@saccc.br` | `Admin@1234` | ADMIN |
+| `coordenacao@saccc.br` | `Coord@1234` | COORDENADOR |
+| `aluno@saccc.br` | `Aluno@1234` | ALUNO |
 ---
 
 ##  Destaques de engenharia
@@ -50,13 +58,6 @@ cd backend && ./mvnw spring-boot:run                 # :8080
 # terminal 2 — frontend
 cd frontend && npm install && npm run dev            # :5173 (proxy /api e /ws)
 ```
-
-### Contas de seed (dev — trocar em produção)
-| E-mail | Senha | Perfil |
-|---|---|---|
-| `admin@saccc.br` | `Admin@1234` | ADMIN |
-| `coordenacao@saccc.br` | `Coord@1234` | COORDENADOR |
-| `aluno@saccc.br` | `Aluno@1234` | ALUNO |
 
 ### Testes automatizados
 ```bash
